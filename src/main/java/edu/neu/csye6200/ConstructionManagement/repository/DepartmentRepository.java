@@ -9,11 +9,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-    @Query(value = "SELECT d FROM departments d JOIN FETCH finance_department fd WHERE d.Dept_ID = :id", nativeQuery = true)
-    Department getDepartmentWithFinance(@Param("id") int id);
 
     @Transactional
     @Modifying(clearAutomatically= true)
     @Query(value = "INSERT INTO employee_dept (Employee_ID, Dept_ID) VALUES (:employeeId, :deptId)", nativeQuery = true)
     void insertIntoEmployeeDept(@Param("employeeId") int employeeId,@Param("deptId") int deptId);
+
+    @Transactional
+    @Modifying(clearAutomatically= true)
+    @Query(value = "DELETE FROM employee_dept WHERE Employee_ID = :employeeId", nativeQuery = true)
+    void deleteIntoEmployeeDept(@Param("employeeId") int employeeId);
 }

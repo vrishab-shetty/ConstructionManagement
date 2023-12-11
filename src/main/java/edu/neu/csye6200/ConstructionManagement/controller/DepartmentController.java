@@ -20,9 +20,8 @@ public class DepartmentController {
         return service.getAll();
     }
 
-
     @GetMapping(path = "/get/{id}")
-    public @ResponseBody Department getAll(@PathVariable("id") Integer id) {
+    public @ResponseBody Department get(@PathVariable("id") Integer id) {
         return service.getById(id);
     }
 }

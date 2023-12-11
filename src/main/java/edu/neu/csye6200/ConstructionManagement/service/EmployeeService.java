@@ -10,6 +10,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class EmployeeService {
     @Autowired
@@ -77,8 +79,16 @@ public class EmployeeService {
 
     public void delete(Integer id) {
         // This returns a JSON or XML with the users
-        repo.deleteById(id);
+        Optional<Employee> employee = repo.findById(id);
+        if(employee.isPresent()) {
+            Employee employeeObj = employee.get();
+            deptRepo.deleteIntoEmployeeDept(employeeObj.getId());
+            repo.deleteById(id);
+            salaryRepository.deleteById(employeeObj.getSalary().getSalaryId());
+            return;
+        }
 
+        throw new IllegalArgumentException("Employee doesn't exist with "+id);
     }
 
 

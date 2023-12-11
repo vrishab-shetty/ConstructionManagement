@@ -2,6 +2,7 @@ package edu.neu.csye6200.ConstructionManagement.repository;
 
 import edu.neu.csye6200.ConstructionManagement.model.Employee;
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 
 @Repository
-public interface EmployeesRepository extends CrudRepository<Employee, Integer> {
+public interface EmployeesRepository extends JpaRepository<Employee, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO employees (Employee_ID, First_Name, Last_Name, Contact_Details, Email_ID, Address, Joining_Date, Role_ID, Salary_ID, Status) VALUES (:id, :firstName, :lastName, :contactDetails, :emailId, :address, :joiningDate, :roleId, :salaryId, :status)", nativeQuery = true)
