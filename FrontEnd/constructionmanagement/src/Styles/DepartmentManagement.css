@@ -1,0 +1,68 @@
+.query-management {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+}
+
+.query {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.query strong {
+    color: #333;
+    font-size: 14px;
+}
+
+.query p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.query textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+.query button {
+    padding: 8px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.query button:hover {
+    background-color: #0056b3;
+}
+
+.query-management button.close-button {
+    padding: 6px 12px;
+    background-color: #6c757d;
+    margin-top: 0;
+    margin-bottom: 20px;
+    float: right;
+}
+
+.query-management button.close-button:hover {
+    background-color: #5a6268;
+}
