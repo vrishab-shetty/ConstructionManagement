@@ -1,19 +1,18 @@
 package edu.neu.csye6200.ConstructionManagement.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
 
+
 @Entity
 @Table(name = "employees")
-public class Employee {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Employee_ID")
-    private int employeeId;
-
-    @Column(name = "First_Name", nullable = false)
-    private String firstName;
+@AttributeOverrides({
+        @AttributeOverride(name = "id", column = @Column(name = "Employee_ID",nullable = false)),
+        @AttributeOverride(name = "name", column = @Column(name = "First_Name", nullable = false))
+})
+public class Employee extends Person {
 
     @Column(name = "Last_Name", nullable = false)
     private String lastName;
@@ -30,30 +29,17 @@ public class Employee {
     @Column(name = "Joining_Date", nullable = false)
     private Date joiningDate;
 
-    @Column(name = "Role_ID", nullable = false)
-    private int roleId;
+    @OneToOne()
+    @JoinColumn(name = "Role_ID", referencedColumnName = "Role_ID")
+    private Role role;
 
-    @Column(name = "Salary_ID", nullable = false)
-    private int salaryId;
+    @OneToOne
+    @JoinColumn(name = "Salary_ID", referencedColumnName = "Salary_ID")
+    private Salary salary;
 
     @Column(name = "Status", nullable = false)
     private String status;
 
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getLastName() {
         return lastName;
@@ -95,20 +81,20 @@ public class Employee {
         this.joiningDate = joiningDate;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRoleId(Role role) {
+        this.role = role;
     }
 
-    public int getSalaryId() {
-        return salaryId;
+    public Salary getSalary() {
+        return salary;
     }
 
-    public void setSalaryId(int salaryId) {
-        this.salaryId = salaryId;
+    public void setSalaryId(Salary salary) {
+        this.salary = salary;
     }
 
     public String getStatus() {

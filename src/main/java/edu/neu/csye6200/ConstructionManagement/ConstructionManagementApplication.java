@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConstructionManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConstructionManagementApplication.class, args);
+		SpringApplication application = new SpringApplication(ConstructionManagementApplication.class);
+		application.setLazyInitialization(true);
+		application.run(args);
 	}
 
 }

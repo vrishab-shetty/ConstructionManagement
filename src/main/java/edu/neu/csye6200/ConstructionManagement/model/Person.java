@@ -1,21 +1,22 @@
-package edu.neu.csye6200.ConstructionManagement;
+package edu.neu.csye6200.ConstructionManagement.model;
 
 import jakarta.persistence.*;
 
 @MappedSuperclass
-public class Department {
+public class Person {
 
-    @Column(name = "Dept_ID")
-    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    @Column(name = "Dept_Name", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
