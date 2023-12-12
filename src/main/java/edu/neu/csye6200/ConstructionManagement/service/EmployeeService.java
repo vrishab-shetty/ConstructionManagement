@@ -42,6 +42,7 @@ public class EmployeeService {
 
     public void update(Employee employee) {
         // Assuming that employee's ID, role, and salary IDs are set and valid
+
         repo.updateEmployee(
                 employee.getId(),
                 employee.getName(),
@@ -51,8 +52,8 @@ public class EmployeeService {
                 employee.getAddress(),
                 employee.getJoiningDate(),
                 employee.getRole().getRoleId(),
-                employee.getSalary().getSalaryId(),
                 employee.getStatus());
+        salaryRepository.save(employee.getSalary());
     }
 
 

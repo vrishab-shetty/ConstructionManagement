@@ -29,7 +29,7 @@ public interface EmployeesRepository extends JpaRepository<Employee, Integer> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE employees SET First_Name = :firstName, Last_Name = :lastName, Contact_Details = :contactDetails, Email_ID = :emailId, Address = :address, Joining_Date = :joiningDate, Role_ID = :roleId, Salary_ID = :salaryId, Status = :status WHERE Employee_ID = :employeeId", nativeQuery = true)
+    @Query(value = "UPDATE employees SET First_Name = :firstName, Last_Name = :lastName, Contact_Details = :contactDetails, Email_ID = :emailId, Address = :address, Joining_Date = :joiningDate, Role_ID = :roleId, Status = :status WHERE Employee_ID = :employeeId", nativeQuery = true)
     void updateEmployee(@Param("employeeId") int employeeId,
                         @Param("firstName") String firstName,
                         @Param("lastName") String lastName,
@@ -38,6 +38,5 @@ public interface EmployeesRepository extends JpaRepository<Employee, Integer> {
                         @Param("address") String address,
                         @Param("joiningDate") Date joiningDate,
                         @Param("roleId") int roleId,
-                        @Param("salaryId") int salaryId,
                         @Param("status") String status);
 }
